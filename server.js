@@ -1,21 +1,28 @@
-const express = require('express');
-const { version } = require('./package.json');
+'use strict';
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const Hapi = require('@hapi/hapi');
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
+const init = async () => {
+    const server = Hapi.server({
+        port: 3000,
+        host: 'localhost'
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/',
+        handler: (request, h) => {
+            return 'Hello, World!';
+        }
+    });
+
+    await server.start();
+    console.log('Server running on %s', server.info.uri);
+};
+
+process.on('unhandledRejection', (err) => {
+    console.error(err);
+    process.exit(1);
 });
 
-app.get('/version', (req, res) => {
-  res.json({ version });
-});
-
-if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
-
-module.exports = app;
+init();

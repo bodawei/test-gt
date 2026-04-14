@@ -1,13 +1,13 @@
 {
-  "name": "test-gt",
+  "name": "hapi-server",
   "version": "1.0.0",
-  "description": "Express server with version and health endpoints",
+  "description": "A basic Hapi.js web server",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "node --test"
+    "start": "node server.js"
   },
   "dependencies": {
+    "@hapi/hapi": "^21.4.8",
     "express": "^4.18.2"
   }
 }
