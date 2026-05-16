@@ -1,5 +1,1 @@
-issue_prefix: tg
-issue-prefix: tg
-dolt.auto-start: false
-gc.endpoint_origin: inherited_city
-gc.endpoint_status: verified
+
